@@ -1,0 +1,28 @@
+{
+ "add_total_row": 0,
+ "creation": "2020-01-17 14:28:05.484757",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "idx": 0,
+ "is_standard": "Yes",
+ "modified": "2020-01-17 15:26:35.730878",
+ "modified_by": "Administrator",
+ "module": "Aristo",
+ "name": "Aristo Project Report",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT DISTINCT `tabProject`.name as \"Project:Link/project:100\",\n    `tabProject`.department as \"Department:Data:100\",\n    `tabProject`.customer as \"Customer:Data:100\",\n    `tabProject`.sales_order as \"Sales Order:Link/project:150\",\n    `tabSales Invoice`.name as \"Sales Invoice:Link/project:150\",\n    `tabProject`.expected_start_date as \"Expected Start Date:Date:100\",\n    `tabProject`.expected_end_date as \"Expected End Date:Date:100\",\n    `tabProject`.actual_start_date as \"Actual Start Date:Date:100\",\n    `tabProject`.actual_end_date as \"Actual End Date:Date:100\",\n    `tabProject`.estimated_costing as \"Estimated Cost:Data:100\",\n    `tabProject`.total_costing_amount as \"Total Costing Amount (via Timesheets):Data:100\",\n    `tabProject`.total_expense_claim as \"Total Expense Claim (via Expense Claims):Data:100\",\n    `tabProject`.total_purchase_cost as \"Total Purchase Cost (via Purchase Invoice):Data:100\",\n    `tabProject`.total_sales_amount as \"Total Sales Amount (via Sales Order):Data:100\",\n    `tabProject`.total_billable_amount as \"Total Billable Amount (via Timesheets):Data:100\",\n    `tabProject`.total_billed_amount as \"Total Billed Amount (via Sales Invoices):Data:100\",\n    `tabProject`.total_consumed_material_cost as \"Total Consumed Material Cost (via Stock Entry):Data:100\",\n    `tabProject`.total_expense_claim as \"Total Expense Claim (via Expense Claims):Data:100\",\n    `tabProject`.gross_margin as \"Gross Margin:Currency:100\",\n    `tabProject`.per_gross_margin as \"Gross Margin:Percent:100\",\n    `tabStock Entry Detail`.item_code as \"Item Code:Data:100\",\n    `tabStock Entry Detail`.qty as \"Stock Entry Quantity:Data:100\",\n    `tabStock Entry Detail`.basic_rate as \"Basic Rate (as per Stock UOM):Data:100\",\n    `tabStock Entry Detail`.basic_amount as \"Basic Amount:Currency:100\",\n    `tabStock Entry Detail`.actual_qty as \"Actual Qty (at source/target):Data:100\",\n    `tabSales Invoice Item`.item_code as \"Item Code:Data:100\",\n    `tabSales Invoice Item`.qty as \"Quantity:Data:100\",\n    `tabSales Invoice Item`.rate as \"Rate (as per Stock UOM):Data:100\",\n    `tabSales Invoice Item`.amount as \"Amount:Currency:100\"\nFROM\n  `tabProject`,\n  `tabStock Entry Detail`,`tabSales Invoice Item`,`tabSales Invoice`\n  WHERE \n (`tabProject`.project_name=`tabStock Entry Detail`.project AND `tabSales Invoice`.creation=`tabSales Invoice Item`.creation) AND \n `tabStock Entry Detail`.project=`tabSales Invoice`.project ;\n  ",
+ "ref_doctype": "Project",
+ "report_name": "Aristo Project Report",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "Projects User"
+  },
+  {
+   "role": "Projects Manager"
+  }
+ ]
+}
